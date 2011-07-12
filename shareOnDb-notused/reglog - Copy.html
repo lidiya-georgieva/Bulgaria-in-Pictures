@@ -1,0 +1,139 @@
+﻿<!DOCTYPE>
+<html>
+<head>
+  <title> Register or login </title>
+  <link rel = "stylesheet" href = "index.css"/>
+<script language="javascript"> 
+<!-- 
+
+function checkUsername(username){ 
+  document.getElementById('message').innerHTML = 'РџСЂРѕРІРµСЂСЏРІР°РЅРµ...'; 
+  var xmlhttp=false; 
+  try { 
+    xmlhttp = new ActiveXObject('Msxml2.XMLHTTP'); 
+  } catch (e) { 
+    try { 
+      xmlhttp = new 
+      ActiveXObject('Microsoft.XMLHTTP'); 
+    } catch (E) { 
+      xmlhttp = false; 
+    } 
+  } 
+  if (!xmlhttp && typeof XMLHttpRequest!='undefined') { 
+    xmlhttp = new XMLHttpRequest();  
+  } 
+  xmlhttp.onreadystatechange=function() { 
+    if (xmlhttp.readyState==4) { 
+      var content = xmlhttp.responseText;
+      if( content ){ 
+        switch(content){ 
+          case "1":document.getElementById('message').innerHTML = "<span style='color:red'>Р—Р°РµС‚Рѕ!</span>"; break; 
+          case "2":document.getElementById('message').innerHTML = "<span style='color:green'>РЎРІРѕР±РѕРґРЅРѕ</span>"; break; 
+		  case "3":document.getElementById('message').innerHTML = "<span style='color:green'>Too short</span>"; break; 
+		  case "4":document.getElementById('message').innerHTML = "<span style='color:green'>The username consists only of letters,digits,-,_,.</span>"; break; 
+          default :document.getElementById('message').innerHTML = ""; break; 
+        } 
+      } 
+    } 
+  } 
+  xmlhttp.open('POST', "ajaxcheck.php", true); 
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  
+  xmlhttp.send("username=" + username) 
+  return; 
+} 
+
+function checkPass(password){ 
+  document.getElementById('message2').innerHTML = 'РџСЂРѕРІРµСЂСЏРІР°РЅРµ...'; 
+  var xmlhttp=false; 
+  try { 
+    xmlhttp = new ActiveXObject('Msxml2.XMLHTTP'); 
+  } catch (e) { 
+    try { 
+      xmlhttp = new 
+      ActiveXObject('Microsoft.XMLHTTP'); 
+    } catch (E) { 
+      xmlhttp = false; 
+    } 
+  } 
+  if (!xmlhttp && typeof XMLHttpRequest!='undefined') { 
+    xmlhttp = new XMLHttpRequest();
+  } 
+  
+  xmlhttp.onreadystatechange=function() { 
+    if (xmlhttp.readyState==4) { 
+      var content = xmlhttp.responseText; 
+      if( content ){ 
+        switch(content){ 
+          case "1":document.getElementById('message2').innerHTML = "&lt;span style='color:red'>Too short&lt;/span>"; break; 
+          case "2":document.getElementById('message2').innerHTML = "&lt;span style='color:green'>Ok&lt;/span>"; break; 
+          default :document.getElementById('message2').innerHTML = ""; break; 
+        } 
+      } 
+    } 
+  } 
+  xmlhttp.open('POST', "ajaxcheck.php", true);
+  xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  
+  xmlhttp.send("password=" + password) 
+  return; 
+} 
+
+-->
+</script>
+</head>
+<body>
+   <div id="headerreg">
+    <div id = "login">
+    <form name = "input" action = "login.php" method = "post" onsubmit = "if(this.username.value == '') {
+			alert('Please enter your Name in the form');
+			return false;
+		  }
+		  else if(this.password.value == '') {
+			alert('Please enter your Password in the form');
+			return false;
+		  }">
+	  Username: <input type = "text" name = "username" class = "types"/>
+	  Password: <input type = "password" name = "password" class = "types"/>
+	  
+	  <input type = "submit" name = "submit" value = "enter the dark zone" />
+	</form>
+   </div>
+   </div>
+   <div id = "register">
+   Register
+   <form name = "input" action = "register.php" method = "post" onsubmit="
+		  if(this.username.value == '') {
+			alert('Please enter your Name in the form');
+			return false;
+		  }
+		  else if(this.password.value == '') {
+			alert('Please enter your Password in the form');
+			return false;
+		  }
+		  else if(this.repassword.value == '') {
+			alert('Please confirm your Password in the form');
+			return false;
+		  }
+		  else if(this.firstname.value == '') {
+			alert('Please enter your firstName in the form');
+			return false;
+		  }
+		  else if(this.lastname.value == '') {
+			alert('Please enter your LastName in the form');
+			return false;
+		  }
+		 ">
+      Username: <input type = "text" name = "username" class = "types" style = "width:150px;margin-left:55px;" onkeyup="checkUsername(this.value)"/><div id="message"></div> <br/>
+	  Password: <input type = "password" name = "password" class = "types" style = "width:150px;margin-left:55px;" onkeyup="checkPass(this.value)"/><div id="message2"></div> <br/>
+	  Re-enter password: <input type = "password" name = "repassword" class = "types" style = "width:150px;" onkeyup="checkRepass(this.value)"/><div id="message3"></div> <br/>
+	  First name: <input type = "text" name = "firstname" class = "types" style = "width:150px;margin-left:53px;"/><br/>
+	  Last name: <input type = "text" name = "lastname" class = "types" style = "width:150px;margin-left:53px;"/><br/>
+	  <input type = "hidden" name = "hidd" value = "1"/>
+	  <input type = "submit" name = "submit" value = "come to the dark side" />
+   </form>
+   </div>
+   
+  
+</body>
+</html>
